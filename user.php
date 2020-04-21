@@ -29,10 +29,19 @@ Class User implements Crud{
         $con = new DBConnector;
         $mysqli = $con->conn;
         $res = $mysqli -> query("INSERT INTO user(first_name, last_name, user_city) VALUES('$fn', '$ln', '$city')") or die("Error: ".mysqli_connect_error());
+        $con->closeDatabase();
         return $res;
     }
     public function readAll(){
-        return null;
+        $con = new DBConnector;
+        $mysqli = $con->conn;
+        $result = $mysqli -> query("SELECT * FROM user");
+        $rowData=array();
+        while($row=mysqli_fetch_array($result,MYSQLI_ASSOC)){
+            $rowData[]=$row;
+        }
+        $con->closeDatabase();
+        return $rowData;
     }
     public function readUnique(){
         return null;

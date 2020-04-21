@@ -20,6 +20,17 @@ if(isset($_POST['btn-save'])){
         echo "An error occured!";
     }
 }
+
+if(isset($_POST['btn-view'])){
+
+    $first_name = $_POST['first_name'];
+    $last_name = $_POST['last_name'];
+    $city = $_POST['city_name'];
+
+    $user = new User($first_name,$last_name,$city);
+
+    print_r($user->readAll());
+}
 ?>
 
 <html>
@@ -43,6 +54,10 @@ if(isset($_POST['btn-save'])){
 
                 <tr>
                     <td><button type="submit" name="btn-save"><strong>SAVE</strong></button></td>
+                </tr>
+
+                <tr>
+                    <td><button type="submit" name="btn-view"><strong>VIEW ALL USERS</strong></button></td>
                 </tr>
             </table>
         </form>
