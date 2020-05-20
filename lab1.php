@@ -2,6 +2,7 @@
 
 include_once 'DBConnector.php';
 include_once 'user.php';
+include_once 'fileUploader.php';
 
 $con = new DBConnector;
 
@@ -81,6 +82,10 @@ if(isset($_POST['btn-view'])){
 
                 <tr>
                     <td><input type="password" name="password" placeholder="Password"/></td>
+                </tr>
+
+                <tr>
+                    <td>Profile image:<input type="file" name="fileToUpload" id="fileToUpload"/></td>
                 </tr>
 
                 <tr>
